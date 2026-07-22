@@ -15,7 +15,10 @@ use AiSdk\Utils\Support\Url;
 
 final class HumeSpeechModel extends BaseModel implements SpeechModelInterface
 {
-    public function __construct(private readonly string $modelId, private readonly HumeOptions $options) {}
+    public function __construct(
+        private readonly string $modelId,
+        private readonly HumeOptions $options,
+    ) {}
     public function provider(): string
     {
         return HumeOptions::PROVIDER_NAME;
@@ -41,7 +44,7 @@ final class HumeSpeechModel extends BaseModel implements SpeechModelInterface
     private function mime(string $format): string
     {
         return match ($format) {
-            'wav' => 'audio/wav', 'pcm' => 'audio/pcm', default => 'audio/mpeg'
+            'wav' => 'audio/wav', 'pcm' => 'audio/pcm', default => 'audio/mpeg',
         };
     }
 }
